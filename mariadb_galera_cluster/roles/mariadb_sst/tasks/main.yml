@@ -1,0 +1,10 @@
+---
+- name: Bootstrap first MariaDB Galera cluster node
+  command: galera_new_cluster
+
+- name: Add Galera SST user
+  mysql_user:
+    name: "{{ galera_sst_user }}"
+    host: "localhost"
+    password: "{{ galera_sst_pass }}"
+    priv: "*.*:RELOAD,LOCK TABLES,REPLICATION CLIENT"
