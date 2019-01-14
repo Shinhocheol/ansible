@@ -1,0 +1,17 @@
+---
+- hosts: galera_cluster
+  roles:
+   - mariadb_repo
+   - mariadb_package
+
+#- hosts: galera-1
+#  roles:
+#   - mariadb_sst
+
+- hosts: galera-2
+  roles:
+   - mariadb_start
+
+- hosts: galera-3
+  roles:
+   - mariadb_start
