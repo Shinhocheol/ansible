@@ -1,0 +1,6 @@
+---
+galera_sst_user: galera-sst
+galera_sst_pass: 82e876ba89903e040ff4
+galera_wsrep_cluster_name: openatck_galera_cluster
+galera_cluster_interface: eth0
+galera_cluster_interface_fact_var: ansible_{{ galera_cluster_interface }}
