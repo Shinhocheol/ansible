@@ -1,0 +1,21 @@
+---
+- name: Install MariaDB server packages
+  yum: name={{ item }} state=present
+  with_items:
+    - MariaDB-client
+    - MariaDB-server
+    - galera
+    - socat
+
+- name: Install percona-xtrabackup packages
+  yum:
+    name: https://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-2.3.10/binary/redhat/7/x86_64/percona-xtrabackup-2.3.10-1.el7.x86_64.rpm
+    state: present
+
+
+- name: Install MySQL-python
+  yum: name=MySQL-python state=present
+
+- name: Add galera configuration
+  template: src=opnestack-server.cnf.j2 dest=/etc/my.cnf.d/opnestack-server.cnf
+    owner=root group=root mode=0644
